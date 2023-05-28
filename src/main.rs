@@ -1,5 +1,4 @@
 #[macro_use] extern crate rocket;
-use figment::Figment;
 
 #[get("/hello?<name>")]
 fn hello(name: Option<&str>) -> String {
@@ -11,10 +10,6 @@ fn hello(name: Option<&str>) -> String {
 
 #[launch]
 fn rocket() -> _ {
-    let figment = Figment::from(rocket::Config::debug_default())
-        .merge(("port", 80))
-        .merge(("address", "192.168.212.37"));
-
-    rocket::custom(figment)
+    rocket::build()
         .mount("/", routes![hello])
 }
