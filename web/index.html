@@ -1,0 +1,25 @@
+<html lang="ko">
+    <head>
+        <title>Test Index</title>
+
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                console.log("DOM Content Loaded!")
+                
+                var frameElement = document.querySelector("#frame")
+                function frame() {
+                    frameElement.innerText = parseInt(frameElement.innerText) + 1
+                    requestAnimationFrame(frame)
+                }
+                
+                requestAnimationFrame(frame)
+            })
+        </script>
+
+        <link href="static/style/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="frame">0</div>
+    </body>
+</html>
